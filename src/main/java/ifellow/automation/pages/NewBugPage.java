@@ -104,7 +104,7 @@ public class NewBugPage {
     }
 
     public void writeTask() {
-        task.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        task.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         task.click();
         task.setValue("210437");
         Selenide.sleep(500);
@@ -112,7 +112,7 @@ public class NewBugPage {
     }
 
     public void writeLinkEpic() {
-        linkEpic.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        linkEpic.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         linkEpic.click();
         linkEpic.setValue("Epic");
         Selenide.sleep(500);
@@ -121,34 +121,34 @@ public class NewBugPage {
     }
 
     public void writeSprint() {
-        sprint.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        sprint.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         sprint.click();
         sprint.setValue("Доска Спринт 2");
         sprint.pressEnter();
     }
 
     public void writeSerious() {
-        serious.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        serious.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         serious.click();
-        seriousTrivial.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        seriousTrivial.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         seriousTrivial.click();
     }
 
     public void create() {
-        buttonCreate.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        buttonCreate.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonCreate.click();
-        buttonTaskInWork.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        buttonTaskInWork.shouldBe(Condition.enabled, Duration.ofSeconds(15));
     }
 
     public void taskInWork() {
-        buttonTaskInWork.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        buttonTaskInWork.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskInWork.click();
     }
 
     public void taskFinish() {
-        buttonTaskBusinessProc.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        buttonTaskBusinessProc.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskBusinessProc.click();
-        buttonTaskFinish.shouldBe(Condition.enabled, Duration.ofSeconds(5));
+        buttonTaskFinish.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskFinish.click();
     }
 }

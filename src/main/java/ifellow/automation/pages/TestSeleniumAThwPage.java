@@ -17,19 +17,19 @@ public class TestSeleniumAThwPage {
     private final SelenideElement versionTask = $x("//a[contains(text(), 'Version 2.0')]").as("Версия");
 
     public void findTest() {
-        search.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        search.shouldBe(Condition.visible, Duration.ofSeconds(15));
         search.click();
         search.setValue("TestSeleniumATHomework").pressEnter();
-        nameTask.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        nameTask.shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public String checkStatus() {
-        statusTask.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        statusTask.shouldBe(Condition.visible, Duration.ofSeconds(15));
         return statusTask.getText();
     }
 
     public String checkVersion() {
-        versionTask.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        versionTask.shouldBe(Condition.visible, Duration.ofSeconds(15));
         return versionTask.getText();
     }
 

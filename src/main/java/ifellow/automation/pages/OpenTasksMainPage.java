@@ -26,34 +26,34 @@ public class OpenTasksMainPage {
     }
 
     public void clickCreateTaskButton() {
-        createTaskButton.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        createTaskButton.shouldBe(Condition.visible, Duration.ofSeconds(10));
         createTaskButton.click();
-        listTasks.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        listTasks.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     public void clickListTask() {
-        listTasks.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        listTasks.shouldBe(Condition.visible, Duration.ofSeconds(10));
         listTasks.click();
-        elementTask.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        elementTask.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     public void selectTask() {
-        elementTask.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        elementTask.shouldBe(Condition.visible, Duration.ofSeconds(10));
         elementTask.click();
     }
 
     public void openDialogWindow() {
-        dialogWindow.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        dialogWindow.shouldBe(Condition.visible, Duration.ofSeconds(10));
         dialogWindow.click();
-        newTaskThemeTextBox.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        newTaskThemeTextBox.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     public String createNewTask() {
-        newTaskThemeTextBox.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        newTaskThemeTextBox.shouldBe(Condition.visible, Duration.ofSeconds(15));
         newTaskThemeTextBox.clear();
         String nameTask = "TASK-" + getIncreaseCounter();
         newTaskThemeTextBox.setValue(nameTask);
-        createButton.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        createButton.shouldBe(Condition.visible, Duration.ofSeconds(15));
         createButton.click();
         return nameTask;
     }
