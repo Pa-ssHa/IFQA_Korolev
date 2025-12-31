@@ -14,6 +14,7 @@ public class DashboardTaskPage {
     private final SelenideElement projectAllList = $x("//a[@id='browse_link']").as("Проекты");
     private final SelenideElement projectTest = $x("//a[@id='admin_main_proj_link_lnk']").as("Проект тест");
     private final SelenideElement projectMenu = $x("//div[@id='browse_link-content']").as("Меню с проектами");
+    private final SelenideElement openTasks = $x("//span[@id='issues-subnavigation-title']").as("Заголовок открытые задачи");
 
     public void selectListProject() {
         projectAllList.shouldBe(Condition.visible, Duration.ofSeconds(15));

@@ -1,6 +1,7 @@
 package ifellow.automation.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import ifellow.automation.utils.TaskCounter;
 import lombok.Getter;
@@ -53,14 +54,20 @@ public class OpenTasksMainPage {
         newTaskThemeTextBox.clear();
         String nameTask = "TASK-" + getIncreaseCounter();
         newTaskThemeTextBox.setValue(nameTask);
-        createButton.shouldBe(Condition.visible, Duration.ofSeconds(15));
-        createButton.click();
         return nameTask;
     }
 
-    public void checkCounterTask(String nameTask) {
-        SelenideElement task = $x("//span[contains(text(),'" + nameTask + "')]");
-        task.shouldBe(Condition.visible, Duration.ofSeconds(10));
+    public void buttonCreateNewTask() {
+        createButton.shouldBe(Condition.visible, Duration.ofSeconds(15));
+        createButton.click();
     }
 
+    public void updatePage() {
+        Selenide.refresh();
+    }
+
+    public boolean checkVisibleCounterTask() {
+        Selenide.refresh();
+        return true ? counter.shouldBe(Condition.visible, Duration.ofSeconds(10)) != null : false;
+    }
 }

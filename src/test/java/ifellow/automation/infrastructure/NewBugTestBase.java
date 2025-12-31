@@ -4,13 +4,14 @@ import ifellow.automation.pages.NewBugPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class NewBugTestBase extends OpenTaskTestBase {
+public class NewBugTestBase extends TestSeleniumAThwTestBase {
 
     private final NewBugPage newBugPage = new NewBugPage();
 
     public void addNewBugs() {
-        addNewTask();
+        checkTaskHW();
 
+        newBugPage.clickReturnMenu();
         assertTrue(newBugPage.getCreateTaskButton().isEnabled(), "Кнопка создания отображается");
         newBugPage.clickCreateTaskButton();
 
@@ -24,7 +25,8 @@ public class NewBugTestBase extends OpenTaskTestBase {
         newBugPage.openDialogWindow();
 
         assertTrue(newBugPage.getThemeBug().isEnabled(), "поле ввода темы отображается");
-        newBugPage.writeTheme("Theme 1");
+        String theme = "Theme 1";
+        newBugPage.writeTheme(theme);
 
         assertTrue(newBugPage.getVisualButton1().isEnabled(), "Кнопка виртуальный в описании доступна");
         assertTrue(newBugPage.getVisualButton2().isEnabled(), "Кнопка виртуальный в окружении доступна");

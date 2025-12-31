@@ -20,16 +20,14 @@ public class AuthTestBase extends WebHooks {
 
     public void fillLogin() {
         ifellowLoginPage.goToLoginPage();
-        SelenideElement loginForm = $x("//h1[contains(text(),'Добро пожаловать в Jira')]").as("Приветствие на входе");
-        assertTrue(loginForm.isDisplayed());
+        assertTrue(ifellowLoginPage.getLoginForm().isDisplayed());
 
         ifellowLoginPage.enterLoginData(properties.getProperty("login"), properties.getProperty("password"));
         assertEquals(properties.getProperty("login"), ifellowLoginPage.getLoginTextBox().getValue());
 
         ifellowLoginPage.clickButtonLogin();
-
-        SelenideElement dashboard = $x("//h3[contains(text(),'Назначенные мне')]").as("dashboard с задачами");
-        assertTrue(dashboard.isDisplayed());
+        ifellowLoginPage.checkPassLogin();
+        assertTrue(ifellowLoginPage.getDashboard().isDisplayed());
     }
 
     @BeforeEach

@@ -18,32 +18,27 @@ public class NewBugPage {
     private final SelenideElement listTasks = $x("//button[@class='iic-widget__issue-type-selector__trigger aui-button aui-button-subtle aui-button-compact aui-dropdown2-trigger']").as("Список для выбора задачи");
     private final SelenideElement elementTask = $x("//a[@class='aui-icon-container' and contains(text(), 'Ошибка')]").as("Список для выбора задачи");
     private final SelenideElement dialogWindow = $x("//button[@class='aui-button aui-button-text iic-widget__more' and contains(text(), 'Открыть в диалоговом окне')]").as("Кнопка открытия диалогового окна");
-
     private final SelenideElement themeBug = $x("//input[@id='summary']").as("Поле ввода темы бага");
     private final SelenideElement visualButton1 = $x("(//button[@class='aui-button' and contains(text(), 'Визуальный')])[1]").as("Кнопка визуальный");
     private final SelenideElement visualButton2 = $x("(//button[@class='aui-button' and contains(text(), 'Визуальный')])[2]").as("Кнопка визуальный");
     private final SelenideElement descriptionText = $x("(//iframe[contains(@id,'mce_') and contains(@title,'Rich Text Area')])[1]").as("Поле для описания");
     private final SelenideElement version1 = $x("(//option[@value='10001'])[1]").as("Версия1");
     private final SelenideElement version2 = $x("(//option[@value='10001'])[2]").as("Версия2");
-
     private final SelenideElement tags = $x("//textarea[@id='labels-textarea']").as("Список меток");
-
     private final SelenideElement environmentText = $x("(//iframe[contains(@id,'mce_') and contains(@title,'Rich Text Area')])[2]").as("Поле для окружения");
-
     private final SelenideElement task = $x("//textarea[@id='issuelinks-issues-textarea']").as("Список задач");
-
     private final SelenideElement linkEpic = $x("//input[@id='customfield_10100-field']").as("ссылка на эпик");
-
     private final SelenideElement sprint = $x("//input[@id='customfield_10104-field']").as("Спринт");
-
     private final SelenideElement serious = $x("//select[@id='customfield_10400']").as("Серьезность");
     private final SelenideElement seriousTrivial = $x("//option[contains(text(),'Тривиальный')]").as("Серьезность тривиальный");
-
     private final SelenideElement buttonCreate = $x("//input[@id='create-issue-submit']").as("Кнопка создания");
-
     private final SelenideElement buttonTaskInWork = $x("//span[@class='trigger-label' and contains(text(),'В работе')]").as("Кнопка задача в работе");
-    private final SelenideElement buttonTaskBusinessProc = $x("//span[@class='dropdown-text' and contains(text(),'Бизнес-процесс')]").as("Кнопка задача в работе");
-    private final SelenideElement buttonTaskFinish = $x("//span[@class='trigger-label' and contains(text(),'Выполнено')]").as("Кнопка задача в работе");
+    private final SelenideElement buttonTaskBusinessProc = $x("//a[@id='opsbar-transitions_more']").as("Кнопка 'Бизнес-процесс'");
+    private final SelenideElement buttonTaskFinish = $x("//a[span[@class='trigger-label' and text()='Выполнено']]").as("Кнопка 'Выполнено'");
+
+    public void clickReturnMenu() {
+        Selenide.back();
+    }
 
     public void clickCreateTaskButton() {
         createTaskButton.shouldBe(Condition.visible, Duration.ofSeconds(5));
@@ -106,8 +101,8 @@ public class NewBugPage {
     public void writeTask() {
         task.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         task.click();
-        task.setValue("210437");
-        Selenide.sleep(500);
+        task.setValue("21");
+        task.shouldHave(Condition.attribute("aria-expanded", "true"), Duration.ofSeconds(5));
         task.pressEnter();
     }
 
@@ -115,7 +110,7 @@ public class NewBugPage {
         linkEpic.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         linkEpic.click();
         linkEpic.setValue("Epic");
-        Selenide.sleep(500);
+        linkEpic.shouldHave(Condition.attribute("aria-expanded", "true"), Duration.ofSeconds(5));
         linkEpic.sendKeys(Keys.ARROW_DOWN);
         linkEpic.pressEnter();
     }
@@ -146,9 +141,12 @@ public class NewBugPage {
     }
 
     public void taskFinish() {
-        buttonTaskBusinessProc.shouldBe(Condition.enabled, Duration.ofSeconds(15));
+        buttonTaskBusinessProc.shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskBusinessProc.click();
-        buttonTaskFinish.shouldBe(Condition.enabled, Duration.ofSeconds(15));
+        buttonTaskBusinessProc.click();
+        buttonTaskFinish.shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskFinish.click();
     }
 }

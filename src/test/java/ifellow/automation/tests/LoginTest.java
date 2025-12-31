@@ -11,6 +11,4 @@ public class LoginTest extends AuthTestBase {
     public void testAuthorization() {
         fillLogin();
     }
-
-
 }

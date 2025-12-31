@@ -1,5 +1,6 @@
 package ifellow.automation.infrastructure;
 
+import com.codeborne.selenide.SelenideElement;
 import ifellow.automation.pages.OpenTasksMainPage;
 import ifellow.automation.utils.TaskCounter;
 
@@ -25,14 +26,16 @@ public class OpenTaskTestBase extends ProjectTestBase {
         assertTrue(openTasksMainPage.getDialogWindow().isDisplayed(), "Кнопка диалоговое окно отображается");
         openTasksMainPage.openDialogWindow();
 
-        int beforeAdd = TaskCounter.currentCounter(($x("//span[contains(text(),' из ')]")).getText());
+        int beforeAdd = TaskCounter.currentCounter(openTasksMainPage.getCounter().getText());
 
         assertTrue(openTasksMainPage.getNewTaskThemeTextBox().isDisplayed(), "поле ввода темы отображается");
-        String nameTask = openTasksMainPage.createNewTask();
+        openTasksMainPage.createNewTask();
 
-        assertTrue(nameTask.contains(String.valueOf(beforeAdd + 1)), "Счетчик увеличился верно");
+        assertTrue(openTasksMainPage.getCreateButton().isDisplayed(), "кнопка создания отображается");
+        openTasksMainPage.buttonCreateNewTask();
 
-        openTasksMainPage.checkCounterTask(nameTask);
-        assertTrue($x("//span[contains(text(),'" + nameTask + "')]").isDisplayed(), "Задача добавилась");
+        openTasksMainPage.updatePage();
+        assertTrue(openTasksMainPage.checkVisibleCounterTask(), "Счетчик отображается");
+        assertTrue(openTasksMainPage.getCounter().getText().contains(String.valueOf(beforeAdd + 1)), "Счетчик увеличился верно");
     }
 }

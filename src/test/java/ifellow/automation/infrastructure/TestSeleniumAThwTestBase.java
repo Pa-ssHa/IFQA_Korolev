@@ -1,6 +1,7 @@
 package ifellow.automation.infrastructure;
 
 import ifellow.automation.pages.TestSeleniumAThwPage;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,6 +23,5 @@ public class TestSeleniumAThwTestBase extends OpenTaskTestBase {
 
         assertTrue(testSeleniumAThwPage.getVersionTask().isDisplayed(), "Версия отображается");
         assertEquals(testSeleniumAThwPage.checkVersion(), "Version 2.0");
-
     }
 }

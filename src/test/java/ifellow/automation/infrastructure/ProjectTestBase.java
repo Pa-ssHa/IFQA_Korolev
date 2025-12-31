@@ -20,8 +20,7 @@ public class ProjectTestBase extends AuthTestBase {
         assertTrue(dashboardTaskPage.getProjectTest().isDisplayed(), "Открылся выпадающий список");
 
         dashboardTaskPage.selectTestProject();
-        SelenideElement openTasks = $x("//span[@id='issues-subnavigation-title']").as("Заголовок открытые задачи");
-        openTasks.shouldBe(Condition.visible, Duration.ofSeconds(10));
-        assertTrue(openTasks.isDisplayed(), "Задачи открылись");
+        dashboardTaskPage.getOpenTasks().shouldBe(Condition.visible, Duration.ofSeconds(10));
+        assertTrue(dashboardTaskPage.getOpenTasks().isDisplayed(), "Задачи открылись");
     }
 }
