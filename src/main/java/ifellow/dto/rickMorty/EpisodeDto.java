@@ -1,11 +1,13 @@
-package ifellow.dto;
+package ifellow.dto.rickMorty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LocationDto {
+public class EpisodeDto {
     private String name;
-    private String url;
+    private List<String> characters;
 }
