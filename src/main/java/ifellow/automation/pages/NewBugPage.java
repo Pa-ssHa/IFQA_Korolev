@@ -141,9 +141,8 @@ public class NewBugPage {
     }
 
     public void taskFinish() {
-        buttonTaskBusinessProc.shouldBe(Condition.visible, Duration.ofSeconds(15))
-                .shouldBe(Condition.enabled, Duration.ofSeconds(15));
-        buttonTaskBusinessProc.click();
+        Selenide.refresh();
+        buttonTaskBusinessProc.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         buttonTaskBusinessProc.click();
         buttonTaskFinish.shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldBe(Condition.enabled, Duration.ofSeconds(15));

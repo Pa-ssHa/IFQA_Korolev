@@ -9,8 +9,6 @@ public class NavigationTest extends ProjectTestBase {
     @Test
     @DisplayName("Выбор проекта 'Test'")
     public void testSelectProject() {
-        selectProjectTest();
+        selectProjectTestUnit();
     }
-
-
 }

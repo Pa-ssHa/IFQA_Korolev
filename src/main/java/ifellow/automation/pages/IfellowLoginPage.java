@@ -38,5 +38,4 @@ public class IfellowLoginPage {
     public void checkPassLogin(){
         dashboard.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
-
 }

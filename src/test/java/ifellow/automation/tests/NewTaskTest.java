@@ -9,6 +9,6 @@ public class NewTaskTest extends OpenTaskTestBase {
     @Test
     @DisplayName("Создание новой задачи")
     public void testCreateNewTask() {
-        addNewTask();
+        addNewTaskUnit();
     }
 }

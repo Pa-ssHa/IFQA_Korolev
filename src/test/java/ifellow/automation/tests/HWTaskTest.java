@@ -9,6 +9,6 @@ public class HWTaskTest extends TestSeleniumAThwTestBase {
     @Test
     @DisplayName("Проверка задачи TestSeleniumATHomework")
     public void checkTask() {
-        checkTaskHW();
+        checkTaskHWUnit();
     }
 }
