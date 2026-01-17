@@ -3,6 +3,10 @@ package ifellow.automation.utils;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class LoadProperties {
@@ -12,7 +16,7 @@ public class LoadProperties {
         try (InputStream input = LoadProperties.class.getClassLoader()
                 .getResourceAsStream("application.properties")) {
             if (input != null) {
-                prop.load(input);
+                prop.load(new InputStreamReader(input, StandardCharsets.UTF_8));
             }
             String login = prop.getProperty("login");
             String password = prop.getProperty("password");

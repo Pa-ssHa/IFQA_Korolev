@@ -1,31 +1,31 @@
 package ifellow.automation.steps;
 
-import ifellow.automation.infrastructure.ProjectTestBase;
+import com.codeborne.selenide.Condition;
+import ifellow.automation.pages.DashboardTaskPage;
 import io.cucumber.java.ru.И;
-import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class NavigationSteps {
-
-    private final ProjectTestBase projectTestBase = new ProjectTestBase();
-
-    @Когда("я вхожу в систему с логином {string} и паролем {string}")
-    public void login(String login, String password) {
-        projectTestBase.fillLogin();
-    }
+    private final DashboardTaskPage dashboardTaskPage = new DashboardTaskPage();
 
     @И("открываю список проектов")
     public void openProjectList() {
-        projectTestBase.openListProject();
+        dashboardTaskPage.selectListProject();
+        assertTrue(dashboardTaskPage.getProjectTest().isDisplayed(), "Открылся выпадающий список");
     }
 
     @И("выбираю проект \"Test\"")
     public void selectProject() {
-        projectTestBase.selectProject();
+        dashboardTaskPage.selectTestProject();
     }
 
     @Тогда("я вижу открытые задачи проекта")
     public void seeOpenTasks() {
-        projectTestBase.viewProjectTest();
+        dashboardTaskPage.getOpenTasks().shouldBe(Condition.visible, Duration.ofSeconds(10));
+        assertTrue(dashboardTaskPage.getOpenTasks().isDisplayed(), "Задачи открылись");
     }
 }

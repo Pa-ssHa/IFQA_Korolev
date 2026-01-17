@@ -21,8 +21,6 @@ target/
 .springBeans
 .sts4-cache
 
-#configuration settings
-src/test/resources/application-local.properties
 
 ### NetBeans ###
 /nbproject/private/

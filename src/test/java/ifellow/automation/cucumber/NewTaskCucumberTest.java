@@ -11,7 +11,7 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("ifellow/automation/feature/NewTask.feature")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ifellow.automation.steps")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "ifellow.automation.steps,ifellow.automation.hooks")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class NewTaskCucumberTest {
 }

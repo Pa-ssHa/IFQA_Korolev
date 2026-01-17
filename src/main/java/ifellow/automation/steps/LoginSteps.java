@@ -1,31 +1,42 @@
 package ifellow.automation.steps;
 
-import ifellow.automation.infrastructure.AuthTestBase;
+import ifellow.automation.pages.IfellowLoginPage;
+import ifellow.automation.utils.LoadProperties;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 
-public class LoginSteps {
+import java.util.Properties;
 
-    private final AuthTestBase authTestBase = new AuthTestBase();
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class LoginSteps {
+    private final IfellowLoginPage ifellowLoginPage = new IfellowLoginPage();
 
     @Когда("я перехожу на страницу логина")
     public void goToLoginPage() {
-        authTestBase.displayLoginForm();
+        ifellowLoginPage.goToLoginPage();
+        assertTrue(ifellowLoginPage.getLoginForm().isDisplayed());
     }
 
-    @И("ввожу логин {string} и пароль {string}")
-    public void enterCredentials(String login, String password) {
-        authTestBase.enterLoginData(login, password);
+    @И("ввожу логин и пароль")
+    public void enterCredentials() {
+        Properties properties = LoadProperties.getProperties();
+        String login = properties.getProperty("login");
+        String password = properties.getProperty("password");
+        ifellowLoginPage.enterLoginData(login, password);
+        assertEquals(login, ifellowLoginPage.getLoginTextBox().getValue());
     }
 
     @И("нажимаю кнопку \"Войти\"")
     public void clickLoginButton() {
-        authTestBase.clickEnterLoginButton();
+        ifellowLoginPage.clickButtonLogin();
+        ifellowLoginPage.checkPassLogin();
     }
 
     @Тогда("я вижу дашборд с задачами")
     public void seeDashboard() {
-        authTestBase.checkSuccessPass();
+        assertTrue(ifellowLoginPage.getDashboard().isDisplayed());
     }
 }
