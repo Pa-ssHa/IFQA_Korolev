@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 @Getter
 public class NewBugPage {
-
     private final SelenideElement createTaskButton = $x("//button[@class='aui-button aui-button-subtle' and contains(text(),'Создать')]").as("Кнопка создания задачи");
     private final SelenideElement listTasks = $x("//button[@class='iic-widget__issue-type-selector__trigger aui-button aui-button-subtle aui-button-compact aui-dropdown2-trigger']").as("Список для выбора задачи");
     private final SelenideElement elementTask = $x("//a[@class='aui-icon-container' and contains(text(), 'Ошибка')]").as("Список для выбора задачи");

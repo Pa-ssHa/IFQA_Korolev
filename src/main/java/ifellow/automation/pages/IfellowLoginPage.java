@@ -11,7 +11,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 @Getter
 public class IfellowLoginPage {
-
     private final String LOGIN_URL = "/login.jsp";
     private final SelenideElement loginTextBox = $x("//input[@id='login-form-username']").as("Поле логина");
     private final SelenideElement passwordTextBox = $x("//input[@id='login-form-password']").as("Поле пароля");

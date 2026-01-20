@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea
 
 ### Eclipse ###
 .apt_generated
@@ -22,7 +23,9 @@ target/
 .sts4-cache
 
 #configuration settings
-src/test/resources/application-local.properties
+ajcore.20260118.171206.484.txt
+.allure
+build
 
 ### NetBeans ###
 /nbproject/private/

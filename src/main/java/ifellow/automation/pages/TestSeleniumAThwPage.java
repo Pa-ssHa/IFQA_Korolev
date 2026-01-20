@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 @Getter
 public class TestSeleniumAThwPage {
-
     private final SelenideElement search = $x("//input[@id='quickSearchInput']").as("Поисковая строка");
     private final SelenideElement nameTask = $x("//h1[@id='summary-val']").as("Название задачи");
     private final SelenideElement statusTask = $x("//span[@class=' jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new jira-issue-status-lozenge-max-width-medium']").as("Статус");
