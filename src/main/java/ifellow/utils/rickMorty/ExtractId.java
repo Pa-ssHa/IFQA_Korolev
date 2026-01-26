@@ -1,4 +1,4 @@
-package ifellow.utils;
+package ifellow.utils.rickMorty;
 
 public class ExtractId {
     public static String extractId(String url) {

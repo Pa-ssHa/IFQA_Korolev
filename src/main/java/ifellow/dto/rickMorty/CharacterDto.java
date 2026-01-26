@@ -1,4 +1,4 @@
-package ifellow.dto;
+package ifellow.dto.rickMorty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
