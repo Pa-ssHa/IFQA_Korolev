@@ -7,15 +7,11 @@ import io.qameta.allure.Step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OpenTaskTestStep {
-
-    private final ProjectTestStep projectTestStep = new ProjectTestStep();
     private final OpenTasksMainPage openTasksMainPage = new OpenTasksMainPage();
-
     private int oldCounter;
 
     @Step("Создание новой задачи")
     public void addNewTask() {
-        projectTestStep.selectProjectTest();
         clickButtonNewTask();
         clickListTask();
         selectTaskForCreating();

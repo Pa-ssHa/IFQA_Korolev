@@ -9,13 +9,10 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProjectTestStep {
-
-    private final AuthTestStep authTestStep = new AuthTestStep();
     private final DashboardTaskPage dashboardTaskPage = new DashboardTaskPage();
 
     @Step("Выбор проекта 'Test'")
     public void selectProjectTest() {
-        authTestStep.fillLogin();
         openProjectList();
         selectProject();
         seeOpenTasks();

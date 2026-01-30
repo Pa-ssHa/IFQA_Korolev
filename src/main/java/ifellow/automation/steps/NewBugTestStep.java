@@ -1,39 +1,17 @@
 package ifellow.automation.steps;
 
 import ifellow.automation.pages.NewBugPage;
-import ifellow.automation.utils.LoadProperties;
+import ifellow.automation.utils.ConfigProperties;
+import ifellow.automation.utils.RequiredConfig;
 import io.qameta.allure.Step;
-
-import java.util.Properties;
+import org.aeonbits.owner.ConfigFactory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NewBugTestStep {
-
-    private final TestSeleniumAThwTestStep testSeleniumAThwTestStep = new TestSeleniumAThwTestStep();
     private final NewBugPage newBugPage = new NewBugPage();
-    private final Properties properties = LoadProperties.getProperties();
-
-    @Step("Создание и проведение бага по всем статусам")
-    public void addNewBugs() {
-        testSeleniumAThwTestStep.checkTaskHW();
-        openMenuAndCreateBug();
-        selectBugStep();
-        openDialog();
-        enterTheme();
-        clickVisualButtons();
-        enterDescriptionStep();
-        selectVersionStep();
-        addTags();
-        enterEnvironmentStep();
-        linkTask();
-        linkEpic();
-        selectSprint();
-        setSeriousness();
-        createBugStep();
-        moveBugWork();
-        moveBugFinish();
-    }
+    private final ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    private final RequiredConfig requiredConfig = new RequiredConfig(configProperties);
 
     @Step("Открытие меню создания задачи")
     public void openMenuAndCreateBug() {
@@ -58,10 +36,7 @@ public class NewBugTestStep {
 
     @Step("Ввод темы бага")
     public void enterTheme() {
-        String theme = properties.getProperty("theme");
-        if (theme == null || theme.trim().isEmpty()) {
-            throw new RuntimeException("theme отсутствует или пустое в application.properties");
-        }
+        String theme = requiredConfig.requireTheme();
         assertTrue(newBugPage.getThemeBug().isEnabled(), "поле ввода темы отображается");
         newBugPage.writeTheme(theme);
     }
@@ -75,10 +50,7 @@ public class NewBugTestStep {
 
     @Step("Ввод описания бага")
     public void enterDescriptionStep() {
-        String description = properties.getProperty("description");
-        if (description == null || description.trim().isEmpty()) {
-            throw new RuntimeException("description отсутствует или пустое в application.properties");
-        }
+        String description = requiredConfig.requireDescription();
         assertTrue(newBugPage.getDescriptionText().isEnabled(), "Поле описание доступно");
         newBugPage.writeDescription(description);
     }
@@ -92,36 +64,40 @@ public class NewBugTestStep {
 
     @Step("Выбор метки")
     public void addTags() {
+        String tag = requiredConfig.requireTag();
         assertTrue(newBugPage.getTags().isEnabled(), "Список с метками отображается");
-        newBugPage.writeTags();
+        newBugPage.writeTags(tag);
     }
 
     @Step("Ввод окружения")
     public void enterEnvironmentStep() {
-        String environment = properties.getProperty("environment");
-        if (environment == null || environment.trim().isEmpty()) {
-            throw new RuntimeException("environment отсутствует или пустое в application.properties");
-        }
+        String environment = requiredConfig.requireEnvironment();
         assertTrue(newBugPage.getEnvironmentText().isEnabled(), "Поле для окружения отображается");
         newBugPage.writeEnvironment(environment);
     }
 
     @Step("Выбор задачи")
     public void linkTask() {
+        String task = requiredConfig.requireTask();
         assertTrue(newBugPage.getTask().isEnabled(), "Список с задачами доступен");
-        newBugPage.writeTask();
+        newBugPage.writeTask(task);
     }
 
     @Step("Выбор эпика")
     public void linkEpic() {
+        String epic = requiredConfig.requireEpic();
         assertTrue(newBugPage.getLinkEpic().isDisplayed(), "Ссылка на эпик доступна");
-        newBugPage.writeLinkEpic();
+        newBugPage.writeLinkEpic(epic);
     }
 
     @Step("Выбор спринта")
     public void selectSprint() {
+        String sprint = requiredConfig.requireSprint();
+        if (sprint == null || sprint.trim().isEmpty()) {
+            throw new RuntimeException("description отсутствует или пустое в application.properties");
+        }
         assertTrue(newBugPage.getSprint().isDisplayed(), "Спринт доступен");
-        newBugPage.writeSprint();
+        newBugPage.writeSprint(sprint);
     }
 
     @Step("Выбор серьезности")

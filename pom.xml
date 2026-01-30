@@ -19,7 +19,7 @@
         <allure.maven.version>2.12.0</allure.maven.version>
         <maven.surefire.version>3.2.5</maven.surefire.version>
         <aspectj.version>1.9.21</aspectj.version>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
@@ -58,6 +58,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.12</version>
         </dependency>
     </dependencies>
     <build>

@@ -86,10 +86,10 @@ public class NewBugPage {
         version2.click();
     }
 
-    public void writeTags() {
+    public void writeTags(String tag) {
         tags.shouldBe(Condition.enabled, Duration.ofSeconds(5));
         tags.click();
-        tags.setValue("QA_school");
+        tags.setValue(tag);
         tags.pressEnter();
     }
 
@@ -97,27 +97,27 @@ public class NewBugPage {
         executeJavaScript("tinymce.editors[1].setContent('" + environment + "');");
     }
 
-    public void writeTask() {
+    public void writeTask(String nameTask) {
         task.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         task.click();
-        task.setValue("21");
+        task.setValue(nameTask);
         task.shouldHave(Condition.attribute("aria-expanded", "true"), Duration.ofSeconds(5));
         task.pressEnter();
     }
 
-    public void writeLinkEpic() {
+    public void writeLinkEpic(String epic) {
         linkEpic.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         linkEpic.click();
-        linkEpic.setValue("Epic");
+        linkEpic.setValue(epic);
         linkEpic.shouldHave(Condition.attribute("aria-expanded", "true"), Duration.ofSeconds(5));
         linkEpic.sendKeys(Keys.ARROW_DOWN);
         linkEpic.pressEnter();
     }
 
-    public void writeSprint() {
+    public void writeSprint(String sprintTask) {
         sprint.shouldBe(Condition.enabled, Duration.ofSeconds(15));
         sprint.click();
-        sprint.setValue("Доска Спринт 2");
+        sprint.setValue(sprintTask);
         sprint.pressEnter();
     }
 
