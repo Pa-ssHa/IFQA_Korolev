@@ -7,6 +7,7 @@ import ifellow.automation.steps.ProjectTestStep;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Счетчика задач через создание задачи")
@@ -18,6 +19,7 @@ public class NewTaskTest extends WebHooks {
     @Feature("Задачи")
     @Story("Создание задачи")
     @Test
+    @Tag("ID-3")
     @DisplayName("Создание новой задачи")
     public void testCreateNewTask() {
         authTestStep.fillLogin();

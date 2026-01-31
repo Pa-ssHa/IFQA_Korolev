@@ -20,6 +20,7 @@ public class LoginTest extends WebHooks {
     @Feature("Авторизация")
     @Story("Вход в систему")
     @Test
+    @Tag("ID-1")
     @DisplayName("Проверка авторизации")
     public void testAuthorization() {
         authTestStep.goToLoginPage();

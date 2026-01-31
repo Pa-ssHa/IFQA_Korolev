@@ -5,6 +5,7 @@ import ifellow.automation.steps.*;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Создание нового бага с описанием")
@@ -19,6 +20,7 @@ public class NewBugTest extends WebHooks {
     @Story("Создание бага")
     @DisplayName("Создание бага")
     @Test
+    @Tag("ID-5")
     public void checkBug() {
         authTestStep.fillLogin();
         projectTestStep.selectProjectTest();
