@@ -7,6 +7,7 @@ target/
 ajcore.20260118.171206.484.txt
 .idea
 .allure
+build
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
