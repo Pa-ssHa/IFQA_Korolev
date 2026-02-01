@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import ifellow.service.ResponseCustomApiService;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.util.Map;
 public class AuthorizationClient {
     private final ObjectMapper mapper = new ObjectMapper();
 
+    @Step("Отправить POST /login с измененным username")
     public Response authorizeChangeName(File file, String url, String newName, Map<String, String> headers) throws IOException {
         JsonNode currentCredentials = mapper.readTree(file);
         ObjectNode changeName = currentCredentials.deepCopy();
@@ -20,6 +22,7 @@ public class AuthorizationClient {
         return ResponseCustomApiService.postResponse(changeName.toString(), url, headers);
     }
 
+    @Step("Отправить POST /login с изменённым password")
     public Response authorizeChangePassword(File file, String url, String newPassword, Map<String, String> headers) throws IOException {
         JsonNode currentCredentials = mapper.readTree(file);
         ObjectNode changePassword = currentCredentials.deepCopy();
@@ -27,7 +30,12 @@ public class AuthorizationClient {
         return ResponseCustomApiService.postResponse(changePassword.toString(), url, headers);
     }
 
+    @Step("Отправить POST /login с корректными данными")
     public Response authorize(File file, String url, Map<String, String> headers) {
         return ResponseCustomApiService.postResponse(file, url, headers);
+    }
+
+    public void authorizeInit(File file, String url, Map<String, String> headers) {
+        ResponseCustomApiService.postResponse(file, url, headers);
     }
 }
